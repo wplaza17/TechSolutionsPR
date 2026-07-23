@@ -41,11 +41,8 @@
             <h2>Contáctanos</h2>
             <p>Complete el siguiente formulario para comunicarse con nuestro equipo.</p>
             <p class="form-note">Los campos marcados con <span class="required-mark">*</span> son obligatorios.</p>
-            <p class="form-note"><strong>Nota:</strong> Para probarlo, puedes usar Live Server en VS Code o subir la página a un hosting. El formulario enviará los mensajes a la dirección configurada.</p>
-            <form action="https://formsubmit.co/wplaza@uagm.edu" method="POST">
-                <input type="hidden" name="_subject" value="Nuevo mensaje desde TechSolutions PR">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
+            <p class="form-note"><strong>Nota:</strong> Este método abre tu cliente de correo predeterminado en el dispositivo para enviar el mensaje directamente.</p>
+            <form id="contact-form">
                 <label class="required">Nombre:</label><br>
                 <input type="text" name="nombre" required><br><br>
                 <label class="required">Correo electrónico:</label><br>
@@ -78,5 +75,24 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('contact-form')?.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            const nombre = formData.get('nombre') || '';
+            const correo = formData.get('correo') || '';
+            const telefono = formData.get('telefono') || '';
+            const mensaje = formData.get('mensaje') || '';
+
+            const subject = encodeURIComponent('Nuevo mensaje desde TechSolutions PR');
+            const body = encodeURIComponent(
+                `Nombre: ${nombre}\nCorreo: ${correo}\nTeléfono: ${telefono}\n\nMensaje:\n${mensaje}`
+            );
+
+            window.location.href = `mailto:wplaza@uagm.edu?subject=${subject}&body=${body}`;
+        });
+    </script>
 </body>
 </html>
