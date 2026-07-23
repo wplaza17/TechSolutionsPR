@@ -43,7 +43,7 @@
                 <label class="required">Correo electrónico:</label><br>
                 <input type="email" name="correo" required><br><br>
                 <label class="required">Teléfono:</label><br>
-                <input type="tel" name="telefono" required><br><br>
+                <input type="tel" name="telefono" id="telefono" placeholder="(000)0000000" required><br><br>
                 <label class="required">Mensaje:</label><br>
                 <textarea name="mensaje" rows="5" required></textarea><br><br>
                 <button type="submit">Enviar Mensaje</button>
@@ -72,6 +72,24 @@
     </footer>
 
     <script>
+        const telefonoInput = document.getElementById('telefono');
+
+        if (telefonoInput) {
+            telefonoInput.addEventListener('input', function () {
+                let value = this.value.replace(/\D/g, '');
+
+                if (value.length > 10) {
+                    value = value.slice(0, 10);
+                }
+
+                if (value.length > 0) {
+                    value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6)}`;
+                }
+
+                this.value = value.trim();
+            });
+        }
+
         document.getElementById('contact-form')?.addEventListener('submit', function (event) {
             event.preventDefault();
 
