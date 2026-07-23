@@ -53,35 +53,78 @@ nav {
     top: 0;
     z-index: 20;
     background-color: #003366;
-    padding: 8px 16px;
+    padding: 10px 16px;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
 }
 
-nav ul {
+.site-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+nav ul,
+.nav-menu {
     list-style: none;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 14px;
+    gap: 8px 12px;
     margin: 0;
     padding: 0;
 }
 
-nav li {
+nav li,
+.nav-menu li {
     margin: 0;
 }
 
-nav a {
+nav a,
+.nav-menu a {
     color: white;
     text-decoration: none;
     font-weight: 600;
-    padding: 8px 12px;
+    padding: 7px 10px;
     display: inline-block;
+    border-radius: 999px;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-nav a:hover {
+nav a:hover,
+.nav-menu a:hover {
     color: #ffcc00;
-    text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.12);
+    text-decoration: none;
 }
 
 hr {
@@ -145,15 +188,17 @@ main {
         padding: 0 16px;
     }
 
+    nav {
+        padding: 8px 12px;
+    }
+
     nav ul {
-        flex-direction: column;
-        align-items: center;
+        gap: 6px 8px;
     }
 
     nav a {
-        padding: 10px 14px;
-        width: 100%;
-        text-align: center;
+        padding: 6px 9px;
+        font-size: 0.95rem;
     }
 
     .hero-section,
@@ -198,47 +243,60 @@ main {
     }
 }
 
-    .hero-section {
-        gap: 24px;
+@media (max-width: 720px) {
+    nav {
+        padding: 8px 10px;
     }
 
-    .hero-copy {
-        padding-left: 0;
+    .site-nav {
+        display: block;
     }
 
-    .hero-copy h2 {
-        font-size: clamp(1.9rem, 5vw, 2.4rem);
+    .nav-toggle {
+        display: flex;
+        margin: 0 auto 6px;
     }
 
-    .cta-buttons {
+    .nav-menu {
+        display: none;
         flex-direction: column;
-        align-items: stretch;
+        width: 100%;
+        gap: 6px;
     }
 
-    .button-primary,
-    .button-secondary {
+    .site-nav.open .nav-menu {
+        display: flex;
+    }
+
+    .nav-menu li {
         width: 100%;
     }
 
-    .card-grid,
-    .contact-grid,
-    .testimonial-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-image img,
-    .galeria img,
-    .video-section video {
-        max-width: 100%;
-        height: auto;
-    }
-
-    form {
+    .nav-menu a {
+        display: block;
         width: 100%;
+        text-align: center;
+        padding: 10px 8px;
+        font-size: 0.95rem;
     }
 }
 
 @media (max-width: 520px) {
+    nav {
+        padding: 8px 10px;
+    }
+
+    nav ul,
+    .nav-menu {
+        gap: 4px 6px;
+    }
+
+    nav a,
+    .nav-menu a {
+        padding: 6px 8px;
+        font-size: 0.9rem;
+    }
+
     header {
         padding: 22px 14px;
     }
