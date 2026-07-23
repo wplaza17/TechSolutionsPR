@@ -52,6 +52,7 @@
                 <label class="required">Mensaje:</label><br>
                 <textarea name="mensaje" rows="5" required></textarea><br><br>
                 <button type="submit">Enviar Mensaje</button>
+                <p class="form-note">Si el correo no se abre automáticamente, toca <a id="fallback-link" href="mailto:wplaza@uagm.edu">abrir el correo manualmente</a>.</p>
             </form>
         </section>
 
@@ -91,7 +92,10 @@
                 `Nombre: ${nombre}\nCorreo: ${correo}\nTeléfono: ${telefono}\n\nMensaje:\n${mensaje}`
             );
 
-            window.location.href = `mailto:wplaza@uagm.edu?subject=${subject}&body=${body}`;
+            const mailtoLink = `mailto:wplaza@uagm.edu?subject=${subject}&body=${body}`;
+            document.getElementById('fallback-link').setAttribute('href', mailtoLink);
+
+            window.location.href = mailtoLink;
         });
     </script>
 </body>
