@@ -43,7 +43,7 @@
                 <label class="required">Correo electrónico:</label><br>
                 <input type="email" name="correo" required><br><br>
                 <label class="required">Teléfono:</label><br>
-                <input type="tel" name="telefono" id="telefono" placeholder="(000)0000000" required><br><br>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="tel" name="telefono" id="telefono" placeholder="(000)0000000" maxlength="14" required><br><br>
                 <label class="required">Mensaje:</label><br>
                 <textarea name="mensaje" rows="5" required></textarea><br><br>
                 <button type="submit">Enviar Mensaje</button>
@@ -83,7 +83,7 @@
                 }
 
                 if (value.length > 0) {
-                    value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6)}`;
+                    value = `(${value.slice(0, 3)})${value.slice(3, 6)}${value.slice(6)}`;
                 }
 
                 this.value = value.trim();
