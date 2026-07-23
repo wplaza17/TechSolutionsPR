@@ -87,6 +87,28 @@ nav a:hover {
     text-decoration: none;
 }
 
+@media (max-width: 720px) {
+    nav ul {
+        gap: 6px 8px;
+    }
+
+    nav a {
+        padding: 6px 8px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 520px) {
+    nav ul {
+        gap: 4px 6px;
+    }
+
+    nav a {
+        padding: 6px 8px;
+        font-size: 0.9rem;
+    }
+}
+
 hr {
     border: none;
     border-top: 1px solid #d3dce6;
